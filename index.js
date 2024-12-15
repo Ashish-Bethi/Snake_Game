@@ -16,3 +16,20 @@ let foodX;
 let foodY;
 let score = 0;
 //defining snake
+let snake = [{}];
+
+window.addEventListener("keydown", changeDirection);
+resetBtn.addEventListener("click", resetGame);
+
+gameStart();
+
+function gameStart() {}
+
+function resetGame() {}
+function clearBoard() {}
+function createFood() {}
+function drawFood() {}
+function drawSnake() {}
+function changeDirection() {}
+function checkGameOver() {}
+function displayGameOver() {}
