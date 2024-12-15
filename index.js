@@ -98,8 +98,8 @@ function changeDirection(event) {
 
   const goingUp = yVelocity == -unitSize;
   const goingDown = yVelocity == unitSize;
-  const goingRight = yVelocity == unitSize;
-  const goingLeft = yVelocity == -unitSize;
+  const goingRight = xVelocity == unitSize;
+  const goingLeft = xVelocity == -unitSize;
 
   switch (true) {
     case keyPressed == LEFT && !goingRight:
@@ -136,7 +136,7 @@ function checkGameOver() {
       break;
   }
   for (let i = 1; i < snake.length; i++) {
-    if (snake[i].x == snake[0].x && snake[i].y == snake[0].x) {
+    if (snake[i].x == snake[0].x && snake[i].y == snake[0].y) {
       running = false;
     }
   }
