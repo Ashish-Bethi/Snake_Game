@@ -9,7 +9,7 @@ const snakeColor = "purple";
 const snakeBorder = "black";
 const foodColor = "red";
 const unitSize = 25;
-let running = false;
+let running = false; // is game running
 let xVelocity = unitSize;
 let yVelocity = 0;
 let foodX;
@@ -28,12 +28,33 @@ window.addEventListener("keydown", changeDirection);
 resetBtn.addEventListener("click", resetGame);
 
 gameStart();
-createFood();
-drawFood();
-function gameStart() {}
 
+function gameStart() {
+  running = true;
+  scoreText.textContent = score;
+  createFood();
+  drawFood();
+  nextTick();
+}
+function nextTick() {
+  if (running) {
+    setTimeout(() => {
+      clearBoard();
+      drawFood();
+      moveSnake();
+      drawSnake();
+      checkGameOver();
+      nextTick();
+    }, 75);
+  } else {
+    displayGameOver();
+  }
+}
 function resetGame() {}
-function clearBoard() {}
+function clearBoard() {
+  ctx.fillStyle = boardBackground;
+  ctx.fillRect(0, 0, gameWidth, gameHeight);
+}
 function createFood() {
   function randomFood(min, max) {
     const randNum =
